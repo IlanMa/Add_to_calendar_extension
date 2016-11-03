@@ -1,0 +1,19 @@
+{
+	"name": "Bobak Being Black",
+	"description": "Why is bobak so black?",
+	"version": "0.1",
+
+	"manifest_version": 2,
+
+	"browser_action": {
+		"default_icon": "icon.png",
+		"default_popup": "popup.html"
+	},
+
+	"background": {
+    	"scripts": ["content.js"]
+  	},
+
+	"permissions": ["contextMenus"]
+
+}
