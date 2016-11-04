@@ -13,3 +13,4 @@ for (var i = 0; i < contexts.length; i++) {
         "onclick": validateDate
     });
 }
+
