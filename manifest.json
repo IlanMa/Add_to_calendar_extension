@@ -11,10 +11,17 @@
     },
 
     "background": {
-        "scripts": ["content.js", "popup.js"]
+        "scripts": ["content.js", "background.js"]
     },
 
     "permissions": ["contextMenus", "identity"],
+
+    "oauth2": {
+        "client_id": "862855258739-h32tr9iragvo5k349pdqrimhq6vdu8l0.apps.googleusercontent.com",
+        "scopes": [
+            "https://www.googleapis.com/auth/calendar"
+        ]
+    },
 
     "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'"
 

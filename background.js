@@ -1,14 +1,26 @@
-var oauth = ChromeExOAuth.initBackgroundPage({
-  'request_url': 'https://www.google.com/accounts/OAuthGetRequestToken',
-  'authorize_url': 'https://www.google.com/accounts/OAuthAuthorizeToken',
-  'access_url': 'https://www.google.com/accounts/OAuthGetAccessToken',
-  'consumer_key': 'anonymous',
-  'consumer_secret': 'anonymous',
-  'scope': 'https://docs.google.com/feeds/',
-  'app_name': 'My Google Docs Extension'
-});
+// chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
+//     // Use the token.
+//     console.log(token);
+//     chrome.identity.removeCachedAuthToken({token: token}, function(info) {
+//     	console.log("?", info)
+//     })
+// });
 
-oauth.authorize(function() {
-	console.log("HEY")
-  // ... Ready to fetch private data ...
+
+
+
+chrome.identity.getAuthToken({
+    interactive: true
+}, function(token) {
+    if (chrome.runtime.lastError) {
+        alert(chrome.runtime.lastError.message);
+        return;
+    }
+    var x = new XMLHttpRequest();
+    console.log(token)
+    x.open('GET', 'https://www.googleapis.com/calendar/v3/calendars?alt=json&access_token=' + token);
+    x.onload = function() {
+        alert(x.response);
+    };
+    x.send();
 });
